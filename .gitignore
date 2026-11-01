@@ -8,6 +8,7 @@ target/
 .idea/
 target/
 *.iml
+.run/
 
 
 ### Eclipse ###
