@@ -1,13 +1,22 @@
 package org.example;
 
 public class SecurityAnalyzer {
+
+    private final RateLimiter rateLimiter = new RateLimiter();
+
     public void verificarAnomalia(String dadosPacote, String ipOrigem) {
-        System.out.println("[SECURITY] Analisando regras de firewall e tráfego para o IP: " + ipOrigem);
+        // Validação de Rate Limiting
+        boolean permitido = rateLimiter.verificarLimite(ipOrigem);
+
+        if (!permitido) {
+            AuditLogger.registrar("CRITICAL", ipOrigem, "Bloqueado por Rate Limit / Possível ataque DoS detectado!");
+            return;
+        }
 
         if (ipOrigem.equals("192.168.1.100")) {
-            System.out.println("[ALERTA CRÍTICO] Tráfego originado de IP suspeito na lista negra: " + ipOrigem);
+            AuditLogger.registrar("WARNING", ipOrigem, "Tráfego originado de IP na lista negra.");
         } else {
-            System.out.println("[OK] IP verificado. Tráfego liberado na política de acesso.");
+            AuditLogger.registrar("INFO", ipOrigem, "Pacote validado e liberado com sucesso. Dados: " + dadosPacote);
         }
     }
 }
