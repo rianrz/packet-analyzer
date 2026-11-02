@@ -1,36 +1,94 @@
 # 🛡️ Java Network Packet Analyzer
 
-Um analisador de pacotes de rede e sistema de segurança desenvolvido em Java 21. O projeto foca em monitoramento em tempo real, mitigação de ataques (Rate Limiting) e persistência de auditoria de segurança, seguindo boas práticas de arquitetura e cobertura de testes.
+A network security analysis system developed in Java 21. The project focuses on request monitoring, rate limiting, and security event auditing.
 
-## 🚀 Funcionalidades
+## Features
 
-- **Rate Limiting (Proteção contra DoS/Brute-force):** Algoritmo de janela de tempo para limitar e bloquear requisições excessivas por endereço IP.
-- **Audit Logger (Registro de Segurança):** Sistema de log estruturado para persistência e rastreabilidade de eventos críticos de rede.
-- **Validação com Testes Unitários:** Suíte de testes automatizados criada com JUnit 5 para validação da lógica de segurança.
-- **Configuração via Maven:** Gerenciamento centralizado de dependências e automação de build.
+- **Rate Limiting:** Limits excessive requests based on IP addresses using a time-window algorithm.
+- **Audit Logger:** Records security-related events for traceability.
+- **Unit Testing:** Automated tests using JUnit 5.
+- **Maven Integration:** Dependency management and build automation.
 
-## 🛠️ Tecnologias Utilizadas
+## Tech Stack
 
-- **Linguagem:** Java 21
-- **Gerenciador de Dependências:** Maven
-- **Testes Unitários:** JUnit 5
-- **Controle de Versão:** Git
+- Java 21
+- Maven
+- JUnit 5
+- Git
 
-## 📂 Estrutura do Projeto
+## Project Structure
 
 ```text
 packet-analyzer/
 ├── src/
-│   ├── main/
-│   │   └── java/
-│   │       └── org/example/
-│   │           ├── AuditLogger.java
-│   │           ├── RateLimiter.java
-│   │           └── SecurityAnalyzer.java
-│   └── test/
-│       └── java/
-│           └── org/example/
-│               └── RateLimiterTest.java
-├── .gitignore
-├── LICENSE (MIT)
+│   ├── main/java/org/example/
+│   │   ├── AuditLogger.java
+│   │   ├── RateLimiter.java
+│   │   └── SecurityAnalyzer.java
+│   └── test/java/org/example/
+│       └── RateLimiterTest.java
+├── LICENSE
+├── README.md
 └── pom.xml
+```
+
+## Requirements
+
+- JDK 21 or later
+- Maven
+
+## Getting Started
+
+```bash
+git clone https://github.com/rianrz/packet-analyzer.git
+cd packet-analyzer
+```
+
+## Run Tests
+
+```bash
+mvn test
+```
+
+## Build
+
+```bash
+mvn clean package
+```
+
+## Security Components
+
+### RateLimiter
+
+Controls request frequency based on source IP addresses, helping mitigate abusive traffic patterns.
+
+### AuditLogger
+
+Provides security event logging for monitoring and traceability.
+
+### SecurityAnalyzer
+
+Organizes the project's security analysis logic.
+
+## Project Goals
+
+- Network security concepts
+- Request throttling
+- Security event auditing
+- Java backend development
+- Automated testing
+
+## Future Improvements
+
+- Additional rate-limiting strategies
+- Configurable request thresholds
+- More comprehensive tests
+- Monitoring and metrics integration
+
+## License
+
+MIT License. See [LICENSE](LICENSE).
+
+## Author
+
+Developed by [rianrz](https://github.com/rianrz).
